@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:replace="public/common :: importPageHead">泛知亦学</title>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link href="../css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <div th:replace="public/common :: importBodyHead"></div>  
+        <div th:replace="public/common :: importPageLeft"></div> 
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h3>学生信息管理</h3>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                 <hr />
+               
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                信息管理
+                            </div>
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li class="active"><a href="#student_info" data-toggle="tab">学生信息</a></li>
+                                    <li class=""><a href="#profile" data-toggle="tab">上传Excel</a></li>
+                                    <li class=""><a href="#messages" data-toggle="tab">预留</a></li>
+                                    <li class=""><a href="#settings" data-toggle="tab">添加学生</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active in" id="student_info">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table style="width: 1500px" class="table table-striped table-bordered table-hover" id="studentTable" >
+                                                    <thead>
+                                                    <tr >
+                                                        <th>序号</th>
+                                                        <!--<th>学校</th>-->
+                                                        <!--<th>专业</th>-->
+                                                        <th>班级</th>
+                                                        <th>学号</th>
+                                                        <th>姓名</th>
+                                                        <th>性别</th>
+                                                        <th>年龄</th>
+                                                        <th>出生日期</th>
+                                                        <th>身份证号</th>
+                                                        <th>手机号</th>
+                                                        <th>地址</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr class="gradeA" th:each="stu,stuStat : ${studentList}">
+                                                        <td style="width: 50px" th:text="${stuStat.count}" class="center">序号</td>
+                                                        <td style="width: 150px" th:text="${stu.clazzname}" class="center">班级</td>
+                                                        <td style="width: 130px" th:text="${stu.code}" class="center">学号</td>
+                                                        <td style="width: 120px" th:text="${stu.name}" class="center">姓名</td>
+                                                        <td style="width: 80px" th:text="${stu.sex}<0?'未知':(${stu.sex}==0?'女':'男')" class="center">未知</td>
+                                                        <td style="width: 80px" th:text="${stu.age}" class="center">年龄</td>
+                                                        <td style="width: 200px" th:text="${#dates.format(stu.birthday, 'yyyy年MM月dd日')}" class="center">出生日期</td>
+                                                        <td style="width: 200px" th:text="${stu.identity}" class="center">身份证号</td>
+                                                        <td style="width: 200px" th:text="${stu.phone}" class="center">手机号</td>
+                                                        <td style="width: 300px" th:text="${stu.address}" class="center">地址</td>
+                                                        <td style="width: 150px">
+                                                            <span><a class="viewUser" href="javascript:;"><img src="../images/view.png" alt="查看" title="查看"/></a></span>
+                                                            <span><a class="modifyUser" href="javascript:;"><img src="../images/modify.png" alt="修改" title="修改"/></a></span>
+                                                            <span><a class="deleteUser" href="javascript:;"><img src="../images/delete.png" alt="删除" title="删除"/></a></span>
+                                                        </td>
+
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile">
+                                        <h4>Profile Tab</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="messages">
+                                        <h4>Messages Tab</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings">
+                                        <h4>Settings Tab</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /. ROW  -->
+                    <div class="col-md-12">
+
+                                        <div class="panel panel-default">
+                                                <div class="panel-heading">Advanced Tables</div>
+                                                <div class="panel-body">
+                                                        <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover" id="userTable" >
+                                                                        <thead>
+                                                                            <tr >
+                                                                              <th>学号</th>
+                                                                                <th>姓名</th>
+                                                                                <th>性别</th>
+                                                                                <th>出生日期</th>
+
+                                                                                <th>操作</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="gradeA" th:each="stu : ${studentList}">
+                                                                              <td th:text="${stu.code}" class="center">学号</td>
+                                                                                <td th:text="${stu.name}" class="center">姓名</td>
+                                                                                <td th:text="${stu.sex}==1?'女':'男'" class="center">性别</td>
+                                                                                <td th:text="${#dates.format(stu.birthday, 'yyy-MM-dd')}" class="center">出生日期</td>
+
+                                                                                <td >
+                                                                                    <span><a class="viewUser" href="javascript:;"><img src="../images/view.png" alt="查看" title="查看"/></a></span>
+                                                                                    <span><a class="modifyUser" href="javascript:;"><img src="../images/modify.png" alt="修改" title="修改"/></a></span>
+                                                                                    <span><a class="deleteUser" href="javascript:;"><img src="../images/delete.png" alt="删除" title="删除"/></a></span>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        </tbody>
+                                                                </table>
+                                                        </div>
+
+                                                </div>
+                                        </div>
+                                        <!--/. Advanced Tables -->
+                                </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                      <!--   Kitchen Sink -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Kitchen Sink
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- End  Kitchen Sink -->
+                    </div>
+                    <div class="col-md-6">
+                         <!--   Basic Table  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Basic Table
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                          <!-- End  Basic Table  -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                          <!--    Striped Rows Table  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Striped Rows Table
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  End  Striped Rows Table  -->
+                    </div>
+                    <div class="col-md-6">
+                        <!--    Bordered Table  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Bordered Table
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive table-bordered">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                         <!--  End  Bordered Table  -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                         <!--    Hover Rows  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Hover Rows
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End  Hover Rows  -->
+                    </div>
+                    <div class="col-md-6">
+                         <!--    Context Classes  -->
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                Context Classes
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="success">
+                                                <td>1</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr class="info">
+                                                <td>2</td>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td>3</td>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                            <tr class="danger">
+                                                <td>4</td>
+                                                <td>John</td>
+                                                <td>Smith</td>
+                                                <td>@jsmith</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  end  Context Classes  -->
+                    </div>
+                </div>
+            <!-- /. ROW  -->
+			</div>
+            <!-- /. PAGE INNER  -->   
+		</div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>    
+    <!-- /. WRAPPER  -->
+
+
+
+    <!-- 引入JavaScript文件 -->
+    <div th:replace="public/common :: importTable"></div>
+    <!--启动表格自动加载换页，需要设置id-->
+    <script>
+        $(document).ready(function () {
+                $('#studentTable').dataTable();
+
+        });
+    </script>
+
+
+
+</body>
+</html>

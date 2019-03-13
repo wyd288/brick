@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head lang="en">
+    <meta charset="UTF-8">
+</head>
+<body>
+	
+	<!-- 引入页面标题 -->
+	<title th:fragment="importPageHead">Wild泛知亦学</title>
+	
+	
+	<!-- 引入正文头部 -->
+	<div th:fragment="importBodyHead">
+		<nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+			<div class="pagetitle">Wild泛知亦学</div>
+			<div class="publicTime">
+				<span >欢迎，<span style="color: yellow;" th:text="${session.userSession.userName}">默认用户</span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span id="time">2018年12月01日 12:01  星期六</span> 
+				<a href="/exit.html" class="btn btn-danger square-btn-adjust">退出</a>
+			</div>
+		</nav>
+	</div>
+	
+	
+	<!-- 引入页面左侧 -->
+	<div class="left" th:fragment="importPageLeft">
+		<nav class="navbar-default navbar-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="main-menu">
+					<li th:attr="id=${activeFrame}">
+					<a href="/frame"><i class="fa fa-home fa-3x" aria-hidden="true"></i>&nbsp;系统首页</a>
+					</li>
+					<li th:attr="id=${activeTable}">
+					<a href="/user"><i class="fa fa-user fa-3x" ></i>&nbsp;&nbsp;&nbsp;用户管理</a>
+					</li>
+					<li th:attr="id=${activeStudent}">
+						<a href="/student"><i class="fa fa-smile-o fa-3x" ></i>&nbsp;&nbsp;学生管理</a>
+					</li>
+					<li th:attr="id=${activeForm}">
+					<a href="/form.html"><i class="fa fa-edit fa-3x"></i>表单模板</a>
+					</li>
+					 <li th:attr="id=${activeUI}">
+					  <a href="/ui.html"><i class="fa fa-book fa-3x"></i>&nbsp;页面元素</a>
+					</li>
+					<li th:attr="id=${activetabpanel}">
+					<a href="/tabpanel.html"><i class="fa fa-columns fa-3x"></i>&nbsp;&nbsp;标签演示</a>
+					</li>
+					<li th:attr="id=${activeChart}">
+					  <a href="/chart.html"><i class="fa fa-cog fa-3x"></i>&nbsp;&nbsp;各式图表</a>
+					</li>		
+									   
+					<li>
+					  <a href="#second-level-one" aria-expanded="false" data-toggle="collapse"><i class="fa fa-th-list  fa-3x"></i>&nbsp;下拉列表</a>
+						<ul id="second-level-one" class="nav nav-second-level panel-collapse collapse">
+							<li>
+								<a href="#third-level-one" aria-expanded="false" data-toggle="collapse">二级链接</a>
+								<ul id="third-level-one" class="nav nav-third-level panel-collapse collapse">
+									<li>
+										<a href="#">三级链接</a>
+									</li>
+									<li>
+										<a href="#">三级链接</a>
+									</li>
+									<li>
+										<a target="_blank" href="https://github.com/wyd288/fan1111">github</a>
+									</li>
+
+								</ul>
+							</li>
+							<li>
+							  <a href="#">二级链接</a>
+							</li>
+							<li>
+							  <a href="#">二级链接</a>
+							</li>
+							
+						</ul>
+					</li>  
+					
+				</ul>
+			</div>
+		</nav>
+		
+	</div>
+	
+	
+	<!-- 引入JavaScript -->
+	<div th:fragment="importJavaScript">
+		
+		<!-- JQUERY SCRIPTS -->
+		<script src="../js/jquery-1.12.4.min.js"></script>
+		<!-- BOOTSTRAP SCRIPTS -->
+		<script src="../bootstrap/bootstrap.min.js"></script>
+		<!-- MORRIS CHART SCRIPTS -->
+		<script src="../js/morris/raphael-2.1.0.min.js"></script>
+		<script src="../js/morris/morris.js"></script>
+		<!-- CUSTOM SCRIPTS -->
+		<script src="../js/custom.js"></script>
+		<script type="text/javascript" src="../js/time.js"></script>
+		<script type="text/javascript" src="../calendar/WdatePicker.js"></script>
+	</div>
+
+    <!--为有表格自动处理的页面引入-->
+    <div th:fragment="importTable">
+        <script src="../js/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="../js/time.js"></script>
+        <script type="text/javascript" src="../calendar/WdatePicker.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="../bootstrap/bootstrap.min.js"></script>
+        <script src="../js/dataTables/jquery.dataTables.js"></script>
+        <script src="../js/dataTables/dataTables.bootstrap.js"></script>
+    </div>
+
+
+	
+
+	
+	<!-- 待添加 -->
+	<div th:fragment="importPort">
+		
+	</div>
+	
+	
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fan1111.mapper.user.UserMapper">
+
+	<select id="getLoginUser" resultType="user">
+		SELECT * FROM smbms_user WHERE userCode=#{userCode} AND userPassword=#{userPassword}
+	</select>
+
+	<select id="getUserCount" resultType="Integer">
+		SELECT count(1) FROM smbms_user
+		<trim prefix="where" prefixOverrides="and / or">
+			1 = 1
+			<if test="userName != null and userName != ''">
+				and userName like "%"#{userName}"%"
+			</if>
+			<if test="userRole != null and userRole != 0">
+				and userRole=#{userRole}
+			</if>
+		</trim>
+	</select>
+	
+	<resultMap type="user" id="userList">
+		<id property="id" column="id"/>
+		<result property="userRoleName" column="roleName"/>
+	</resultMap>
+	
+	<select id="getUserList" resultMap="userList">
+		SELECT *,roleName FROM smbms_user u,smbms_role r
+		<trim prefix="where" prefixOverrides="and / or">
+			userRole=r.id
+			<if test="userName != null and userName != ''">
+				and userName like #{userName}"%"
+			</if>
+			<if test="userRole != null and userRole != 0">
+				and userRole=#{userRole}
+			</if>
+		</trim>
+	</select>	
+		
+	<select id="getUserRoleList" resultType="role">
+		SELECT * FROM smbms_role
+	</select>	
+
+	<select id="getUserById" resultType="user">
+		select * from smbms_user where id = #{id}
+	</select>
+
+	<select id="getUserByUserCode" resultType="user">
+		select * from smbms_user where userCode = #{userCode}
+	</select>
+
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate,idPicPath,workPicPath) 
+		VALUES(#{userCode},#{userName},#{userPassword},#{gender},#{birthday},#{phone},#{address},#{userRole},#{createdBy},#{creationDate},#{idPicPath},#{workPicPath})
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE smbms_user
+		<trim prefix="SET" suffixOverrides="," suffix="WHERE id=#{id}">
+			<if test="userName != null and userName != ''">userName=#{userName},</if>
+			<if test="gender != null and gender != ''">gender=#{gender},</if>
+			<if test="birthday != null and birthday != ''">birthday=#{birthday},</if>
+			<if test="phone != null and phone != ''">phone=#{phone},</if>
+			<if test="address != null and address != ''">address=#{address},</if>
+			<if test="userRole != null and userRole != ''">userRole=#{userRole},</if>
+			<if test="modifyBy != null and modifyBy != ''">modifyBy=#{modifyBy},</if>
+			<if test="modifyDate != null and modifyDate != ''">modifyDate=#{modifyDate},</if>
+		</trim>  
+	</update>
+
+	<delete id="deleteUser">
+		delete from smbms_user where id = #{id}
+	</delete>	
+	
+	<update id="updatePasswordById">
+		UPDATE smbms_user SET 
+			userPassword=#{userPassword}
+		WHERE id=#{id}
+	</update>
+
+</mapper>
