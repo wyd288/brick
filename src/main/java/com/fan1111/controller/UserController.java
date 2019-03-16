@@ -1,15 +1,10 @@
 package com.fan1111.controller;
 
-import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.alibaba.fastjson.JSONArray;
+import com.fan1111.entity.Role;
+import com.fan1111.entity.User;
+import com.fan1111.service.user.UserService;
+import com.fan1111.utils.Constants;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
@@ -22,15 +17,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONArray;
-import com.fan1111.entity.Role;
-import com.fan1111.entity.User;
-import com.fan1111.service.user.UserService;
-import com.fan1111.utils.Constants;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends BaseController {
+public class UserController {
 	@Autowired
 	private UserService userService;
 
