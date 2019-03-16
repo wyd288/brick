@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class FrameController extends BaseController {
+public class FrameController {
 	
 	@RequestMapping(value="/frame")
 	public String index(Model model){

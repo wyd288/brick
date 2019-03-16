@@ -1,6 +1,5 @@
 package com.fan1111.controller;
 
-import com.fan1111.entity.Student;
 import com.fan1111.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

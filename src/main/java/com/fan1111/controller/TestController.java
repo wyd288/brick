@@ -1,7 +1,6 @@
 package com.fan1111.controller;
 
 
-import com.alibaba.fastjson.JSONArray;
 import com.fan1111.entity.User;
 import com.fan1111.service.user.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,8 @@ public class TestController {
     //测试访问接口
     @RequestMapping(value="getusers",method= RequestMethod.GET)
     @ResponseBody
-    public Object  getUsers(){
+    public List<User>  getUsers(){
         List<User> ulist = userService.getUserList(null,null);
-        return JSONArray.toJSONString(ulist);
+        return ulist;
     }
 }
