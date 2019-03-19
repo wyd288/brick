@@ -1,2 +1,2 @@
 # brick
-一个后台管理系统
+Individual learning projects
