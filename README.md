@@ -1,0 +1,2 @@
+# brick
+Individual learning projects
