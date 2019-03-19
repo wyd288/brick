@@ -1,14 +1,12 @@
 package com.fan1111.service.user;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
-import com.fan1111.mapper.user.UserMapper;
 import com.fan1111.entity.Role;
 import com.fan1111.entity.User;
+import com.fan1111.mapper.user.UserMapper;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 	@Resource
@@ -38,9 +36,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getUserById(id);
 	}
 	@Override
-	public User getUserByUserCode(String userCode) {
+	public User getUserByCode(String userCode) {
 		
-		return userMapper.getUserByUserCode(userCode);
+		return userMapper.getUserByCode(userCode);
 	}
 	@Override
 	public Boolean insertUser(User user) {

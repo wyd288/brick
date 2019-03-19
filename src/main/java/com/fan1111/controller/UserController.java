@@ -78,7 +78,7 @@ public class UserController {
 		if(StringUtils.isNotEmpty(userCode)){
 			resultMap.put("userCode", "exist");
 		}else{
-			User user = userService.getUserByUserCode(userCode);
+			User user = userService.getUserByCode(userCode);
 			if(null != user){
 				resultMap.put("userCode", "exist");
 			}else{
@@ -147,8 +147,8 @@ public class UserController {
 		}
 		//完善用户信息
 		User cUser = (User)session.getAttribute(Constants.USER_SESSION);
-		user.setCreatedBy(cUser.getUserRole());
-		user.setCreationDate(new Date());
+		user.setCreator(cUser.getRole());
+		user.setCreationtime(new Date());
 		user.setIdPicPath(idPicPath);
 		user.setWorkPicPath(workPicPath);
 		//添加上传文件地址
@@ -216,8 +216,8 @@ public class UserController {
 			if(null == tempUser){//判断当前登录用户是否为空
 				return "redirect:/sys/user/syserror";
 			}else{
-				user.setModifyBy(tempUser.getUserRole());
-				user.setModifyDate(new Date());	
+				user.setModifier(tempUser.getRole());
+				user.setModificationtime(new Date());
 				Boolean bool = userService.updateUser(user);
 				if(bool){//判断是否更新成功
 					return "redirect:/sys/user/userlist.html";
@@ -248,7 +248,7 @@ public class UserController {
 			hashMap.put("result", "sessionerror");
 			return hashMap;
 		}else{
-			if(oldpassword.equals(user.getUserPassword())){
+			if(oldpassword.equals(user.getPassword())){
 				hashMap.put("result", "true");
 				return hashMap;
 			}else{

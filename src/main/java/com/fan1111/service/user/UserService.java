@@ -1,8 +1,9 @@
 package com.fan1111.service.user;
 
-import java.util.List;
 import com.fan1111.entity.Role;
 import com.fan1111.entity.User;
+
+import java.util.List;
 
 public interface UserService {
 	/**
@@ -35,7 +36,7 @@ public interface UserService {
 	User getUserById(Integer id);
 	
 	
-	User getUserByUserCode(String userCode);
+	User getUserByCode(String userCode);
 	
 	Boolean insertUser(User user);
 	
