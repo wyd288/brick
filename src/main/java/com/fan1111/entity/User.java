@@ -31,14 +31,14 @@ public class User {
 	private String idPicPath;
 	private String workPicPath;
 	private Integer age;
-	private String userRoleName;    
+	private String roleName;
 	
 	
-	public String getUserRoleName() {
-		return userRoleName;
+	public String getRoleName() {
+		return roleName;
 	}
-	public void setUserRoleName(String userRoleName) {
-		this.userRoleName = userRoleName;
+	public void setRoleName(String userRoleName) {
+		this.roleName = roleName;
 	}
 	public Integer getAge() {
 		Date date = new Date();

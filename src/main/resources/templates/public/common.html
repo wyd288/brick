@@ -6,15 +6,15 @@
 <body>
 	
 	<!-- 引入页面标题 -->
-	<title th:fragment="importPageHead">Wild泛知亦学</title>
+	<title th:fragment="importPageHead">泛知亦学</title>
 	
 	
 	<!-- 引入正文头部 -->
 	<div th:fragment="importBodyHead">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-			<div class="pagetitle">Wild泛知亦学</div>
+			<div class="pagetitle">泛知亦学</div>
 			<div class="publicTime">
-				<span >欢迎，<span style="color: yellow;" th:text="${session.userSession.userName}">默认用户</span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span >欢迎，<span style="color: yellow;" th:text="${session.userSession.name}">默认用户</span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				<span id="time">2018年12月01日 12:01  星期六</span> 
 				<a href="/exit.html" class="btn btn-danger square-btn-adjust">退出</a>
 			</div>

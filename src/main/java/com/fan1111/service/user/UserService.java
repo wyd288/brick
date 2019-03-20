@@ -12,21 +12,21 @@ public interface UserService {
 	 * @param userPassword
 	 * @return
 	 */
-	User getUserLogin(String userCode,String userPassword);
+	User getUserLogin(String code,String password);
 	/**
 	 * 获取用户总数
 	 * @param userName
 	 * @param userRole
 	 * @return
 	 */
-	Integer getUserCount(String userName,Integer userRole);
+	Integer getUserCount(String name,Integer role);
 	/**
 	 * 返回用户信息集合
 	 * @param userName
 	 * @param userRole
 	 * @return
 	 */
-	List<User> getUserList(String userName,Integer userRole);
+	List<User> getUserList(String name,Integer role);
 	/**
 	 * 返回用户角色信息集合
 	 * @return
@@ -36,7 +36,7 @@ public interface UserService {
 	User getUserById(Integer id);
 	
 	
-	User getUserByCode(String userCode);
+	User getUserByCode(String code);
 	
 	Boolean insertUser(User user);
 	
@@ -44,6 +44,6 @@ public interface UserService {
 	
 	Boolean deleteUser(Integer id);
 	
-	Boolean updatePasswordById(Integer id,String userPassword);
+	Boolean updatePasswordById(Integer id,String password);
 	
 }

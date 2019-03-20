@@ -6,79 +6,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.fan1111.mapper.user.UserMapper">
 
 	<select id="getLoginUser" resultType="user">
-		SELECT * FROM smbms_user WHERE userCode=#{userCode} AND userPassword=#{userPassword}
+		SELECT * FROM bd_user WHERE code=#{code} AND password=#{password}
 	</select>
 
 	<select id="getUserCount" resultType="Integer">
-		SELECT count(1) FROM smbms_user
+		SELECT count(1) FROM bd_user
 		<trim prefix="where" prefixOverrides="and / or">
 			1 = 1
-			<if test="userName != null and userName != ''">
-				and userName like "%"#{userName}"%"
+			<if test="name != null and name != ''">
+				and name like "%"#{name}"%"
 			</if>
-			<if test="userRole != null and userRole != 0">
-				and userRole=#{userRole}
+			<if test="role != null and role != 0">
+				and role=#{role}
 			</if>
 		</trim>
 	</select>
 	
 	<resultMap type="user" id="userList">
 		<id property="id" column="id"/>
-		<result property="userRoleName" column="roleName"/>
+		<result property="roleName" column="name"/>
 	</resultMap>
 	
 	<select id="getUserList" resultMap="userList">
-		SELECT *,roleName FROM smbms_user u,smbms_role r
+		SELECT *,r.name FROM bd_user u,bd_role r
 		<trim prefix="where" prefixOverrides="and / or">
-			userRole=r.id
-			<if test="userName != null and userName != ''">
-				and userName like #{userName}"%"
+			role=r.id
+			<if test="name != null and name != ''">
+				and name like "%"#{name}"%"
 			</if>
-			<if test="userRole != null and userRole != 0">
-				and userRole=#{userRole}
+			<if test="role != null and role != 0">
+				and role=#{role}
 			</if>
 		</trim>
 	</select>	
 		
 	<select id="getUserRoleList" resultType="role">
-		SELECT * FROM smbms_role
+		SELECT * FROM bd_role
 	</select>	
 
 	<select id="getUserById" resultType="user">
-		select * from smbms_user where id = #{id}
+		select * from bd_user where id = #{id}
 	</select>
 
 	<select id="getUserByUserCode" resultType="user">
-		select * from smbms_user where userCode = #{userCode}
+		select * from bd_user where code = #{code}
 	</select>
 
 	<insert id="insertUser" parameterType="user">
-		INSERT INTO smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate,idPicPath,workPicPath) 
-		VALUES(#{userCode},#{userName},#{userPassword},#{gender},#{birthday},#{phone},#{address},#{userRole},#{createdBy},#{creationDate},#{idPicPath},#{workPicPath})
+		INSERT INTO bd_user(code,name,password,gender,birthday,phone,address,role,creator,creationtime,idPicPath,workPicPath)
+		VALUES(#{code},#{name},#{password},#{gender},#{birthday},#{phone},#{address},#{role},#{creator},#{creationtime},#{idPicPath},#{workPicPath})
 	</insert>
 	
 	<update id="updateUser" parameterType="user">
-		UPDATE smbms_user
+		UPDATE bd_user
 		<trim prefix="SET" suffixOverrides="," suffix="WHERE id=#{id}">
-			<if test="userName != null and userName != ''">userName=#{userName},</if>
+			<if test="name != null and name != ''">name=#{name},</if>
 			<if test="gender != null and gender != ''">gender=#{gender},</if>
 			<if test="birthday != null and birthday != ''">birthday=#{birthday},</if>
 			<if test="phone != null and phone != ''">phone=#{phone},</if>
 			<if test="address != null and address != ''">address=#{address},</if>
 			<if test="userRole != null and userRole != ''">userRole=#{userRole},</if>
-			<if test="modifyBy != null and modifyBy != ''">modifyBy=#{modifyBy},</if>
-			<if test="modifyDate != null and modifyDate != ''">modifyDate=#{modifyDate},</if>
+			<if test="modifier != null and modifier != ''">modifier=#{modifier},</if>
+			<if test="modificationtime != null and modificationtime != ''">modificationtime=#{modificationtime},</if>
 		</trim>  
 	</update>
 
 	<delete id="deleteUser">
-		delete from smbms_user where id = #{id}
+		delete from bd_user where id = #{id}
 	</delete>	
 	
 	<update id="updatePasswordById">
-		UPDATE smbms_user SET 
-			userPassword=#{userPassword}
-		WHERE id=#{id}
+		UPDATE bd_user SET password=#{password} WHERE id=#{id}
 	</update>
 
 </mapper>

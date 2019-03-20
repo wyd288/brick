@@ -12,13 +12,13 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	private UserMapper userMapper;
 	@Override
-	public User getUserLogin(String userCode, String userPassword) {
-		return userMapper.getLoginUser(userCode, userPassword);
+	public User getUserLogin(String code, String password) {
+		return userMapper.getLoginUser(code, password);
 	}
 	@Override
-	public List<User> getUserList(String userName, Integer userRole) {
+	public List<User> getUserList(String name, Integer role) {
 		
-		return userMapper.getUserList(userName, userRole);
+		return userMapper.getUserList(name, role);
 	}
 	@Override
 	public List<Role> getUserRoleList() {
@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getUserRoleList();
 	}
 	@Override
-	public Integer getUserCount(String userName, Integer userRole) {
+	public Integer getUserCount(String name, Integer role) {
 		
-		return userMapper.getUserCount(userName, userRole);
+		return userMapper.getUserCount(name, role);
 	}
 	@Override
 	public User getUserById(Integer id) {
@@ -36,9 +36,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getUserById(id);
 	}
 	@Override
-	public User getUserByCode(String userCode) {
+	public User getUserByCode(String code) {
 		
-		return userMapper.getUserByCode(userCode);
+		return userMapper.getUserByCode(code);
 	}
 	@Override
 	public Boolean insertUser(User user) {
@@ -65,8 +65,8 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	@Override
-	public Boolean updatePasswordById(Integer id, String userPassword) {
-		Integer result = userMapper.updatePasswordById(id, userPassword);
+	public Boolean updatePasswordById(Integer id, String password) {
+		Integer result = userMapper.updatePasswordById(id, password);
 		if(result>0){
 			return true;
 		}

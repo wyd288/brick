@@ -46,12 +46,12 @@ public class UserController {
 		
 		List<User> userList = null;//初始化用户信息集合
 		List<Role> roleList = null;//初始化用户角色信息集合
-		Integer userRole = 0;//初始化用户角色值
+		Integer role = 0;//初始化用户角色值
 		if(queryUserRole != null && !queryUserRole.equals("")){
-			userRole = Integer.parseInt(queryUserRole);
+			role = Integer.parseInt(queryUserRole);
 		}
 		//查询用户信息
-		userList = userService.getUserList(queryUserName,userRole);
+		userList = userService.getUserList(queryUserName,role);
 
 
 		model.addAttribute("userList", userList);
@@ -68,21 +68,21 @@ public class UserController {
 	}
 	/**
 	 * 检查用户编码是否重复
-	 * @param userCode
+	 * @param code
 	 * @return
 	 */
 	@RequestMapping(value="/checkCode",method=RequestMethod.GET)
 	@ResponseBody
-	public Object checkCode(@RequestParam(value="userCode")String userCode){
+	public Object checkCode(@RequestParam(value="code")String code){
 		Map<String, String> resultMap = new HashMap<String, String>();
-		if(StringUtils.isNotEmpty(userCode)){
-			resultMap.put("userCode", "exist");
+		if(StringUtils.isNotEmpty(code)){
+			resultMap.put("code", "exist");
 		}else{
-			User user = userService.getUserByCode(userCode);
+			User user = userService.getUserByCode(code);
 			if(null != user){
-				resultMap.put("userCode", "exist");
+				resultMap.put("code", "exist");
 			}else{
-				resultMap.put("userCode", "noexist");
+				resultMap.put("code", "noexist");
 			}
 		}
 		return JSONArray.toJSONString(resultMap);

@@ -71,7 +71,7 @@
 																	<tbody>
 																		<tr class="gradeA" th:each="user : ${userList}">
 																			<td th:text="${user.id}" >编号</td>
-																			<td th:text="${user.userName}" class="center">姓名</td>
+																			<td th:text="${user.name}" class="center">姓名</td>
 																			<td th:text="${user.gender}==1?'女':'男'" class="center">性别</td>
 																			<td th:text="${#dates.format(user.birthday, 'yyy-MM-dd')}" class="center">出生日期</td>
 																			<td th:text="${user.address}" class="center">地址</td>	
