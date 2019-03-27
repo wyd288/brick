@@ -1,30 +1,39 @@
 
 spring:
-  datasource:   #配置数据库的信息
+  #配置数据库的信息
+  datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/wildms?useSSL=false
     username: root
     password: 1111
-    type: com.alibaba.druid.pool.DruidDataSource #数据源类型
+    #数据源类型，使用alibaba的数据连接池
+    type: com.alibaba.druid.pool.DruidDataSource
   thymeleaf:
-    cache: false #thymeleaf关闭缓存，可以在修改代码后不需要重启服务器
+    #thymeleaf关闭缓存，可以在修改代码后不需要重启服务器
+    cache: false
 
 
 mybatis:
-  type-aliases-package: com.fan1111.entity #给实体类类起别名
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #设置将sql打印到控制台
+  #给实体类类起别名
+  type-aliases-package: com.fan1111.entity
+  #将sql和查询到的数据都打印到控制台
+# configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-#定义视图前缀
+#使用jsp时可定义视图前缀和后缀
 #spring.mvc.view.prefix=/WEB-INF/jsp/
-#定义视图后缀
 #spring.mvc.view.suffix=.jsp
 
 
 #配置集成tomcat的端口，可自行修改
 server:
-  port: 80
+  port: 3456
 
 
 #标记mapper文件的路径，如果报找不到mapper错误时启用
 #mybatis.mapper-locations=classpath:com/fan1111/mapper/*.xml
+
+# 设置将sql打印到控制台，level下配置mapper对应的包名
+logging:
+  level:
+    com.fan1111.mapper: DEBUG
