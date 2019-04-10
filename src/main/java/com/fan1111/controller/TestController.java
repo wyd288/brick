@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,8 +24,11 @@ public class TestController {
     @RequestMapping(value="getlist",method= RequestMethod.GET)
     @ResponseBody
     public List<User>  getUsers(HttpServletResponse res){
-        List<User> ulist = userService.getUserList(null,null);
+        List<User> ulist = new ArrayList<>();
+        ulist = userService.getUserList(null,null);
         res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Method", "POST,GET");
+        res.setContentType("application/json;charset=utf-8");
         return ulist;
     }
 }

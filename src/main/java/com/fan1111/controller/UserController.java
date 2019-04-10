@@ -43,11 +43,13 @@ public class UserController {
 	public String findUsers(@RequestParam(value="queryUserName",required=false)String queryUserName,
 							@RequestParam(value="queryUserRole",required=false)String queryUserRole,
 							Model model){
-		
-		List<User> userList = null;//初始化用户信息集合
-		List<Role> roleList = null;//初始化用户角色信息集合
-		Integer role = 0;//初始化用户角色值
-		if(queryUserRole != null && !queryUserRole.equals("")){
+		//初始化用户信息集合
+		List<User> userList = null;
+		//初始化用户角色信息集合
+		List<Role> roleList = null;
+		//初始化用户角色值
+		Integer role = 0;
+		if(queryUserRole != null && !"".equals(queryUserRole)){
 			role = Integer.parseInt(queryUserRole);
 		}
 		//查询用户信息
@@ -123,12 +125,12 @@ public class UserController {
 					//上传
 					// 重命名
 					String fileName = System.currentTimeMillis()+"-"+RandomUtils.nextInt(999999)+"_card.jpg";
-					File PicFile = new File(path, fileName);
-					if(!PicFile.exists()){
-						PicFile.mkdirs();
+					File picFile = new File(path, fileName);
+					if(!picFile.exists()){
+						picFile.mkdirs();
 					}
 					try {
-						attch.transferTo(PicFile);
+						attch.transferTo(picFile);
 					} catch (Exception e) {
 						e.printStackTrace();
 						request.setAttribute(errorType, "* 文件上传失败");
@@ -209,17 +211,20 @@ public class UserController {
 	 */
 	@RequestMapping(value="/userUpdate.html",method=RequestMethod.POST)
 	public String updateUser(User user,HttpSession session){
-		if(null == user){//判断用户参数是否为空
+		//判断用户参数是否为空
+		if(null == user){
 			return "redirect:/sys/user/syserror";	
 		}else{
 			User tempUser = (User)session.getAttribute(Constants.USER_SESSION);
-			if(null == tempUser){//判断当前登录用户是否为空
+			//判断当前登录用户是否为空
+			if(null == tempUser){
 				return "redirect:/sys/user/syserror";
 			}else{
 				user.setModifier(tempUser.getRole());
 				user.setModificationtime(new Date());
 				Boolean bool = userService.updateUser(user);
-				if(bool){//判断是否更新成功
+				//判断是否更新成功
+				if(bool){
 					return "redirect:/sys/user/userlist.html";
 				}else{
 					return "usermodify";
@@ -238,8 +243,8 @@ public class UserController {
 	@RequestMapping(value="/checkOldPassword",method=RequestMethod.GET)
 	@ResponseBody
 	public Object checkOldPassword(String oldpassword,HttpSession session){
-		HashMap<String, String> hashMap = new HashMap<String, String>();
-		if(null == oldpassword || oldpassword.equals("")){
+		HashMap<String, String> hashMap = new HashMap<>(16);
+		if(null == oldpassword || "".equals(oldpassword)){
 			hashMap.put("result", "error");
 			return hashMap;
 		}
@@ -268,10 +273,11 @@ public class UserController {
 	}
 	@RequestMapping(value="/pwdSave.html")
 	public String updateUserPassword(String id,String oldpassword,String newpassword,HttpSession session,HttpServletRequest request){
-		if(oldpassword.equals(newpassword) ){//后台判断新旧密码是否相同
+		//后台判断新旧密码是否相同,判断传入的ID是否为空
+		if(oldpassword.equals(newpassword) ){
 			request.setAttribute("message", "密码修改失败，请重试");
 			return "pwdmodify";
-		}else if(null == id || id.equals("")){//判断传入的ID是否为空
+		}else if(null == id || "".equals(id)){
 			request.setAttribute("message", "登陆失效，请重新登录");
 			return "pwdmodify";
 		}else{
@@ -291,7 +297,7 @@ public class UserController {
 	@RequestMapping(value="/deleteUser",method=RequestMethod.GET)
 	@ResponseBody
 	public Object deleteUser(@RequestParam(value="id")Integer id){
-		HashMap<String, String> hashMap = new HashMap<String, String>();
+		HashMap<String, String> hashMap = new HashMap<>(16);
 		if(null == id){
 			hashMap.put("delResult", "notexist");
 			return hashMap;

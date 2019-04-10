@@ -17,8 +17,8 @@ mybatis:
   #给实体类类起别名
   type-aliases-package: com.fan1111.entity
   #将sql和查询到的数据都打印到控制台
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #使用jsp时可定义视图前缀和后缀
 #spring.mvc.view.prefix=/WEB-INF/jsp/
@@ -34,6 +34,6 @@ server:
 #mybatis.mapper-locations=classpath:com/fan1111/mapper/*.xml
 
 # 设置将sql打印到控制台，level下配置mapper对应的包名
-#logging:
-#  level:
-#    com.fan1111.mapper: DEBUG
+logging:
+  level:
+    com.fan1111.mapper: DEBUG

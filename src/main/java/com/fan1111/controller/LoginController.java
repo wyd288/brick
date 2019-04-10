@@ -16,29 +16,43 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 	@Resource
 	private UserService userService;
-	
-	//控制访问登陆页面
+
+	/**
+	 * 登陆页面控制
+	 */
 	@RequestMapping(value="/")
 	public String login(){
 		return "login";
 	}
 
 
-
-
-	//访问注册页面
+	/**
+	 * 注册页面控制
+	 */
 	@RequestMapping("/regist.html")
 	public String register(){
 		return "regist";
 	}
-	//修改密码页面
+
+	/**
+	 * 修改密码页面
+	 * @return
+	 */
 	@RequestMapping(value="/forgetPassword.html")
 	public String forgetPassword(){
 		return "error";
 	}
-	
-	
-	//登陆页面控制，成功进入首页，失败返回登录页
+
+
+	/**
+	 * 登陆页面控制，成功进入首页，失败返回登录页
+	 * @param code
+	 * @param password
+	 * @param session
+	 * @param request
+	 * @param model
+	 * @return 返回页面
+	 */
 	@RequestMapping(value="/welcome")
 	public String doLogin(@RequestParam(value="code")String code,
 			@RequestParam(value="password")String password,
