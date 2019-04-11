@@ -1,11 +1,16 @@
 package com.fan1111.utils;
 
+import org.springframework.core.convert.converter.Converter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.core.convert.converter.Converter;
-
+/**
+ * 字符串转日期类
+ * @author wangyds
+ * @date 2019/04/11
+ */
 public class StringToDateConverter implements Converter<String, Date> {
 	private String datapatten;
 	

@@ -6,7 +6,7 @@ import com.fan1111.entity.User;
 import java.util.List;
 
 /**
- *
+ * 用户模块服务接口
  * @author wangyds
  * @date 2019/4/10
  */
@@ -37,17 +37,48 @@ public interface UserService {
 	 * @return
 	 */
 	List<Role> getUserRoleList();
-	
+
+	/**
+	 * 根据ID获取用户
+	 * @param id
+	 * @return
+	 */
 	User getUserById(Integer id);
 
+	/**
+	 * 根据编码获取用户
+	 * @param code
+	 * @return
+	 */
 	User getUserByCode(String code);
-	
+
+	/**
+	 * 添加用户
+	 * @param user
+	 * @return
+	 */
 	Boolean insertUser(User user);
-	
+
+	/**
+	 * 更新用户
+	 * @param user
+	 * @return
+	 */
 	Boolean updateUser(User user);
-	
+
+	/**
+	 * 删除用户
+	 * @param id
+	 * @return
+	 */
 	Boolean deleteUser(Integer id);
-	
+
+	/**
+	 * 根据ID更新用户密码
+	 * @param id
+	 * @param password
+	 * @return
+	 */
 	Boolean updatePasswordById(Integer id,String password);
 	
 }

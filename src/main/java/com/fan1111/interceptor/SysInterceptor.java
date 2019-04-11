@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- *
+ * 系统过滤器
  * @author wangyds
  * @date 2019/4/9
  */

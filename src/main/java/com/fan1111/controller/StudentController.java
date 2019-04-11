@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 学生控制类
+ * @author wangyds
+ * @date 2019/04/11
+ */
 @Controller
 @RequestMapping("student")
 public class StudentController {
@@ -32,7 +37,7 @@ public class StudentController {
         List<Map<String, Object>> stuList = null;
         stuList = studentService.selectStudents(name, code);
         model.addAttribute("studentList",stuList);
-        model.addAttribute("activeStudent", "activeMenu");//标记选择的按钮
+        model.addAttribute("activeStudent", "activeMenu");
         return "table/student";
     }
 

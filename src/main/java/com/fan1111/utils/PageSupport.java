@@ -1,30 +1,27 @@
 package com.fan1111.utils;
 
-public class PageSupport {
-	//当前页码-来自于用户输入
-	private int currentPageNo = 1;
-	
-	//总数量（表）
-	private int totalCount = 0;
-	
-	//页面容量
-	private int pageSize = 0;
-	
-	//总页数-totalCount/pageSize（+1）
-	private int totalPageCount = 1;
+import lombok.Data;
 
-	public int getCurrentPageNo() {
-		return currentPageNo;
-	}
+/**
+ * 页面支持类，用于后端分页
+ * @author wangyds
+ * @date 2019/04/11
+ */
+@Data
+public class PageSupport {
+
+	private int currentPageNo = 1;
+
+	private int totalCount = 0;
+
+	private int pageSize = 0;
+
+	private int totalPageCount = 1;
 
 	public void setCurrentPageNo(int currentPageNo) {
 		if(currentPageNo > 0){
 			this.currentPageNo = currentPageNo;
 		}
-	}
-
-	public int getTotalCount() {
-		return totalCount;
 	}
 
 	public void setTotalCount(int totalCount) {
@@ -34,22 +31,11 @@ public class PageSupport {
 			this.setTotalPageCountByRs();
 		}
 	}
-	public int getPageSize() {
-		return pageSize;
-	}
 
 	public void setPageSize(int pageSize) {
 		if(pageSize > 0){
 			this.pageSize = pageSize;
 		}
-	}
-
-	public int getTotalPageCount() {
-		return totalPageCount;
-	}
-
-	public void setTotalPageCount(int totalPageCount) {
-		this.totalPageCount = totalPageCount;
 	}
 	
 	public void setTotalPageCountByRs(){

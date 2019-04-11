@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- *
+ * 学生VO
  * @author wangyds
  * @date 2019/04/11
  */

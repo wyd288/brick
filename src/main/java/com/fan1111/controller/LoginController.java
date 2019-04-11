@@ -12,6 +12,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 登陆控制类
+ * @author wangyds
+ * @date 2019/04/11
+ */
 @Controller
 public class LoginController {
 	@Resource
@@ -68,8 +73,7 @@ public class LoginController {
 		request.setAttribute("error", "用户名或密码错误！");
 		return "login";
 	}
-	
-	//控制退出，清空登陆信息，返回登陆页
+
 	@RequestMapping("/exit.html")
 	public String loginOut(HttpSession session){
 		session.removeAttribute(Constants.USER_SESSION);

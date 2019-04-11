@@ -37,14 +37,7 @@ public class User {
 	private String workPicPath;
 	private Integer age;
 	private String roleName;
-	
-	
-	public String getRoleName() {
-		return roleName;
-	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
+
 	public Integer getAge() {
 		Date date = new Date();
 		Integer age = date.getYear()-birthday.getYear();
