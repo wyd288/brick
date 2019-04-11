@@ -20,6 +20,7 @@ mybatis:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
 #使用jsp时可定义视图前缀和后缀
 #spring.mvc.view.prefix=/WEB-INF/jsp/
 #spring.mvc.view.suffix=.jsp
@@ -28,10 +29,6 @@ mybatis:
 #配置集成tomcat的端口，可自行修改
 server:
   port: 3456
-
-
-#标记mapper文件的路径，如果报找不到mapper错误时启用
-#mybatis.mapper-locations=classpath:com/fan1111/mapper/*.xml
 
 # 设置将sql打印到控制台，level下配置mapper对应的包名
 logging:

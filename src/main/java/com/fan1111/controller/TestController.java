@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author wangyds
+ * @date 2019/4/10
+ */
 @RestController
 public class TestController {
 
@@ -20,7 +25,11 @@ public class TestController {
     private UserService userService;
 
 
-    //测试访问接口
+    /**
+     * 前端获取数据测试接口
+     * @param res
+     * @return
+     */
     @RequestMapping(value="getlist",method= RequestMethod.GET)
     @ResponseBody
     public List<User>  getUsers(HttpServletResponse res){
@@ -31,4 +40,9 @@ public class TestController {
         res.setContentType("application/json;charset=utf-8");
         return ulist;
     }
+
+
+
+
+
 }

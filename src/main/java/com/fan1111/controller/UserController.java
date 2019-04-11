@@ -76,7 +76,7 @@ public class UserController {
 	@RequestMapping(value="/checkCode",method=RequestMethod.GET)
 	@ResponseBody
 	public Object checkCode(@RequestParam(value="code")String code){
-		Map<String, String> resultMap = new HashMap<String, String>();
+		Map<String, String> resultMap = new HashMap<>(3);
 		if(StringUtils.isNotEmpty(code)){
 			resultMap.put("code", "exist");
 		}else{
@@ -221,7 +221,7 @@ public class UserController {
 				return "redirect:/sys/user/syserror";
 			}else{
 				user.setModifier(tempUser.getRole());
-				user.setModificationtime(new Date());
+				user.setModifiedtime(new Date());
 				Boolean bool = userService.updateUser(user);
 				//判断是否更新成功
 				if(bool){

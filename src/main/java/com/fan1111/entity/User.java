@@ -2,15 +2,20 @@ package com.fan1111.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
 
+/**
+ * 用户VO
+ * @author wangyds
+ * @date 2019/04/11
+ */
 @Data
 public class User {
-	private Integer id; //id 
+	private Integer id;
 	@NotEmpty(message="用户编码不能为空")
 	private String code;
 	@NotEmpty(message="用户名不能为空")
@@ -20,14 +25,14 @@ public class User {
 	private String password;
 	private Integer gender;  
 	@Past(message="出生日期必须是个过去的时间")
-	private Date birthday; //出生日期
-	private String phone; //电话号码
-	private String address; //地址
-	private Integer role; //权限
-	private Integer creator; //创建者
-	private Date creationtime; //创建时间
-	private Integer modifier; //更新者
-	private Date modificationtime;//更新时间
+	private Date birthday;
+	private String phone;
+	private String address;
+	private Integer role;
+	private Integer creator;
+	private Date creationtime;
+	private Integer modifier;
+	private Date modifiedtime;
 	private String idPicPath;
 	private String workPicPath;
 	private Integer age;
@@ -37,7 +42,7 @@ public class User {
 	public String getRoleName() {
 		return roleName;
 	}
-	public void setRoleName(String userRoleName) {
+	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 	public Integer getAge() {
