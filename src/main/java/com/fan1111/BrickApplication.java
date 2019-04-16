@@ -16,4 +16,5 @@ public class BrickApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BrickApplication.class, args);
 	}
+
 }

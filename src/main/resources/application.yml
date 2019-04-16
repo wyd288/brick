@@ -31,6 +31,6 @@ server:
   port: 3456
 
 # 设置将sql打印到控制台，level下配置mapper对应的包名
-logging:
-  level:
-    com.fan1111.mapper: DEBUG
+#logging:
+#  level:
+#    com.fan1111.mapper: DEBUG

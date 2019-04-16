@@ -3,10 +3,7 @@ package com.fan1111.controller;
 
 import com.fan1111.entity.User;
 import com.fan1111.service.user.UserService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +16,7 @@ import java.util.List;
  * @date 2019/4/10
  */
 @RestController
+@CrossOrigin
 public class TestController {
 
     @Resource
