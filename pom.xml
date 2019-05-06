@@ -130,6 +130,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-starter-parent.version}</version>
 				<!--全部打包,可以解决启动jar没有主属性清单的问题-->
 				<executions>
 					<execution>
