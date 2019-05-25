@@ -3,20 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.fan1111</groupId>
-	<artifactId>brick</artifactId>
+	<groupId>com.fanyi.scm</groupId>
+	<artifactId>fanyi-scm-trunk</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>brick</name>
-	<description>一块小红砖，哪里需要哪里搬。</description>
+	<name>fanyi_scm</name>
+	<description>a new project</description>
 
-	<!--<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.2.RELEASE</version>
-		<relativePath/>
-	</parent>-->
 
 	<!-- 集中版本控制设置 -->
 	<properties>

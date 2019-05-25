@@ -3,9 +3,9 @@ spring:
   #配置数据库的信息
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/wildms?useSSL=false
-    username: root
-    password: 1111
+    url: jdbc:mysql://39.100.101.183:3306/dbscm?useSSL=false
+    username: dbscm
+    password: 1234
     #数据源类型，使用alibaba的数据连接池
     type: com.alibaba.druid.pool.DruidDataSource
   thymeleaf:
@@ -15,7 +15,7 @@ spring:
 
 mybatis:
   #给实体类类起别名
-  type-aliases-package: com.fan1111.entity
+  type-aliases-package: com.fanyi.scm.vo
   #将sql和查询到的数据都打印到控制台
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
