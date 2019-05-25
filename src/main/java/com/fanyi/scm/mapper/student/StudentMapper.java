@@ -1,5 +1,6 @@
 package com.fanyi.scm.mapper.student;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  * @author wangyds
  * @date 2019/04/11
  */
-@Component
+@Mapper
 public interface StudentMapper {
 
     /**

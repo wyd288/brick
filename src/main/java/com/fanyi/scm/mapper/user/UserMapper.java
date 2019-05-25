@@ -2,6 +2,7 @@ package com.fanyi.scm.mapper.user;
 
 import com.fanyi.scm.vo.Role;
 import com.fanyi.scm.vo.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * 用户mapper接口
  * @author wangyds
  */
-@Component
+@Mapper
 public interface UserMapper {
 	/**
 	 * 获取登陆用户信息
